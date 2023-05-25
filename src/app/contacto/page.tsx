@@ -5,7 +5,7 @@ import { Separator } from '@/components/ui/Separator'
 export default function ContactPage() {
     return (
         <div>
-            <h3 className="mb-2 font-semibold">Informacion básica</h3>
+            <h3 className="my-6 text-2xl text-black/80 font-semibold">Informacion básica</h3>
             <Fieldset title="Sobre ti">
                 <InputText label="Nombre" />
                 <InputText label="Apellido(s)" />

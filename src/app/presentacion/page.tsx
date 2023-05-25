@@ -7,9 +7,13 @@ import { Textarea } from "@/components/forms/Textarea";
 export default function PresentationPage() {
 
     return (
-        <Fieldset title="Introducción">
+        <>
+            <h3 className="my-6 text-2xl text-black/80 font-semibold">Presentación</h3>
+            <Fieldset title="Introducción">
                 <InputText label="Headline" />
                 <Textarea label="Resumen" />
-        </Fieldset>
+            </Fieldset>
+        </>
+       
     )
 }

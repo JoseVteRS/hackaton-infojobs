@@ -17,13 +17,16 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className}>
-        <div className='flex gap-5' >
+        <div className='flex gap-2' >
           <div className='h-screen w-2/12 bg-primary' >
             <NavbarLat />
 
           </div>
-          <main className='w-10/12'>
-            {children}
+          <main className='w-8/12'>
+            <div className='p-8 max-w-5xl flex flex-col min-h-screen' >
+              {children}
+
+            </div>
           </main>
         </div>
 
