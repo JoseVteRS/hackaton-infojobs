@@ -1,5 +1,5 @@
 'use client'
-import Link from 'next/Link';
+import Link from 'next/link';
 import { IDCardIcon } from '../icons/id-card';
 import { MegaphoneIcon } from '../icons/megaphone-icon';
 
