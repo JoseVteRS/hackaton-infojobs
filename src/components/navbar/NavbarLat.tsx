@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/Link';
-import { ICONS } from "../icons";
+import { IDCardIcon } from '../icons/id-card';
+import { MegaphoneIcon } from '../icons/megaphone-icon';
 
 
 const LINKS = [
@@ -18,9 +19,9 @@ const isCurrentPath = (href: string) => {
   return false
 }
 
-const ICON_MAP = {
-  'megaphone': ICONS.megaphone,
-  'id-card': ICONS["id-card"],
+const ICON_MAP  = {
+  'megaphone': <MegaphoneIcon />,
+  'id-card': <IDCardIcon />,
 }
 
 export const NavbarLat = () => {
@@ -33,12 +34,11 @@ export const NavbarLat = () => {
         <h6 className="text-primary-l4 opacity-60 border-b border-primary-l4 pb-3 uppercase tracking-widest " >Tu perfil</h6>
         <div className='mt-3' >
           {
-            LINKS.map(({ href, label, icon }) => {
-              console.log(href, label);
-
+            LINKS.map(({ href, label, icon }: {href: string, label: string, icon: string}) => {
               return (
                 <div key={`${href}${label}`} className="text-ij-white" >
-                  <Link href={href} className={`appearance-none cursor-pointer py-1 px-0  hover:text-ij-black w-full flex items-center gap-1 text-sm ${isCurrentPath(href) ? 'font-bold' : ''}`}>
+                  <Link href={href} className={`appearance-none cursor-pointer py-1 px-0  hover:text-ij-black w-full flex items-center gap-1 text-sm`}>
+                  { ICON_MAP[icon] }
                     <span>{label}</span>
                   </Link>
                 </div>
