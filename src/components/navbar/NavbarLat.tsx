@@ -12,12 +12,8 @@ const LINKS = [
   { href: '/experiencia-laboral', label: 'Experiencia laboral', icon: 'megaphone' },
 ]
 
-const isCurrentPath = (href: string) => {
-  if (typeof window !== 'undefined') {
-    return window.location.pathname === href
-  }
-  return false
-}
+
+
 
 const ICON_MAP  = {
   'megaphone': <MegaphoneIcon />,
@@ -25,6 +21,8 @@ const ICON_MAP  = {
 }
 
 export const NavbarLat = () => {
+
+  
 
   return (
     <div className='fixed w-2/12' >

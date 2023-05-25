@@ -1,8 +1,25 @@
 import { NavbarLat } from '@/components/navbar/NavbarLat'
-import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const sfpro = localFont({
+  src: [
+
+    {
+      path: '../fonts/sf-pro-text/SFProText-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    
+    },
+    {
+      path: '../fonts/sf-pro-text/SFProText-Semibold.ttf',
+      weight: '600',
+      style: 'normal',
+    }
+  
+  ],
+  
+})
 
 export const metadata = {
   title: 'Create Next App',
@@ -16,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body className={sfpro.className}>
         <div className='flex gap-2' >
           <div className='h-screen w-2/12 bg-primary' >
             <NavbarLat />
