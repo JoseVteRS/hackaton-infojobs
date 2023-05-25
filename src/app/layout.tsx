@@ -1,5 +1,6 @@
-import './globals.css'
+import { NavbarLat } from '@/components/navbar/NavbarLat'
 import { Inter } from 'next/font/google'
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,8 +15,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="es">
+      <body className={inter.className}>
+        <div className='flex' >
+          <div className='h-screen w-2/12 bg-primary' >
+            <NavbarLat />
+
+          </div>
+          <main className='w-10/12'>
+            {children}
+          </main>
+        </div>
+
+      </body>
     </html>
   )
 }
