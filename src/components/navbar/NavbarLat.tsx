@@ -13,30 +13,30 @@ const LINKS = [
 ]
 
 
-
-
-const ICON_MAP  = {
+const ICON_MAP = {
   'megaphone': <MegaphoneIcon />,
   'id-card': <IDCardIcon />,
 }
 
 export const NavbarLat = () => {
 
-  
-
   return (
     <div className='fixed w-2/12' >
 
       <nav className="p-3 w-full">
-        <div className='font-black text-ij-white text-3xl mb-5' >  JOSE  </div>
+        <div className='font-black text-ij-white text-3xl mb-5' >
+          <Link href='/'>
+            JOSE
+          </Link>
+        </div>
         <h6 className="text-primary-l4 opacity-60 border-b border-white/40 pb-3 font-semibold uppercase tracking-widest " >Tu perfil</h6>
         <div className='mt-3' >
           {
-            LINKS.map(({ href, label, icon }: {href: string, label: string, icon: string}) => {
+            LINKS.map(({ href, label, icon }: { href: string, label: string, icon: string }) => {
               return (
                 <div key={`${href}${label}`} className="text-ij-white" >
                   <Link href={href} className={`appearance-none cursor-pointer py-1 px-0 font-light hover:text-ij-black w-full flex items-center gap-1 text-sm`}>
-                  { ICON_MAP[icon] }
+                    {ICON_MAP[icon]}
                     <span>{label}</span>
                   </Link>
                 </div>

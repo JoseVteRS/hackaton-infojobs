@@ -23,7 +23,6 @@ export const InputText = forwardRef<HTMLInputElement, InputProps>((props, ref) =
           {...props}
         />
       </div>
-      <span className="text-error text-xs mt-1" >Error</span>
     </div>
   );
 });
