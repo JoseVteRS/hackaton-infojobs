@@ -1,40 +1,71 @@
-import { Playfair_Display } from 'next/font/google'
+import { Dosis } from "next/font/google";
+import cx from "classnames";
 
-const playfair = Playfair_Display({ subsets: ['latin'] })
+const dosis = Dosis({ subsets: ["latin"] });
 
 interface HeadingProps {
-    children: React.ReactNode
-    as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-    size: string
-    kind: string
+  children: React.ReactNode;
+  as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  size: keyof typeof SIZE;
+  kind: keyof typeof KIND;
 }
 
 const KIND: { [key: string]: string } = {
-    primary: 'text-blue-400',
-    accent: 'text-orange-600',
-    gray: 'text-gray-400',
-    black: 'text-black/90',
+  primary: "text-primary",
+  accent: "text-accent",
+  gray: "text-ij-gray",
+  black: "text-ij-black",
+};
+
+const SIZE = {
+  small: "text-sm",
+  medium: "text-base",
+  large: "text-3xl",
+  xlarge: "text-4xl",
+};
+
+const sizerUnderline =  (size: keyof typeof SIZE)=> {
+    switch (size) {
+        case "small":
+            return "h-[1px]"
+        case "medium":
+            return"h-[3px]"
+        case "large":
+            return "h-[5px]"
+        case "xlarge":
+            return"h-[6px]"
+        default:
+            return "h-[3px]"
+    }
 }
 
-const SIZE: { [key: string]: string } = {
-    small: 'text-sm',
-    medium: 'text-base',
-    large: 'text-lg',
-    xlarge: 'text-xl',
+const colorUnderline = (size: keyof typeof SIZE) => {
+    switch (size) {
+        case "small":
+            return "bg-ij-black"
+        case "medium":
+            return"bg-primary"
+        case "large":
+            return "bg-accent"
+        case "xlarge":
+            return"bg-primary"
+        default:
+            return "bg-primary"
+    }
 }
 
 const Heading = ({ children, as: As, kind, size }: HeadingProps) => {
+  const classNames = cx(`uppercase ${dosis.className}`, {
+    [KIND[kind]]: kind,
+    [SIZE[size]]: sizerUnderline(size)
+  });
 
-    const classNames = `${playfair.className} ${KIND[kind]} ${SIZE[size]}`
+  return (
+    <>
+      <div className={`${colorUnderline(size)} ${sizerUnderline(size)} w-12  mt-5 `}></div>
+      <As className={`${dosis.className} ${classNames} `}>{children}</As>
+    </>
+  );
+};
 
-    return (
-        <>
-            <As className={`${playfair.className} ${classNames} `} >
-                {children}
-            </As>
-            <div className={`${KIND[kind].replace('text', 'bg')} h-1 w-8  rounded-full mb-5`} ></div>
-        </>
-    )
-}
-
-export default Heading
+export default Heading;

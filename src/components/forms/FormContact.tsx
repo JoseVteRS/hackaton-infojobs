@@ -1,16 +1,23 @@
 "use client"
 
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { Fieldset } from './Fieldset';
 import { InputText } from './InputText';
+import { LOCAL_STORAGE_KEYS } from '@/config/contants';
 
 type FormValues = {
     "name": string;
     "surname": string;
+    "headline": string;
 }
 
 export const FormContact = () => {
 
-    const onSubmit = (data: FormValues) => console.log(data);
+    const [,setData] = useLocalStorage(LOCAL_STORAGE_KEYS.CONTACT, {})
+
+    const onSubmit = (data: FormValues) => {
+        setData(data)
+    }
     return (
         <Fieldset<FormValues> onSubmit={onSubmit} title="Introducción">
             {
@@ -18,7 +25,7 @@ export const FormContact = () => {
                     <>
                         <InputText label="Nombre" {...register("name")} />
                         <InputText label={`Apellido`} {...register("surname")} />
-                        {/* <Textarea label="Resumen" /> */}
+                        <InputText label={`Headline`} {...register("headline")} />
                     </>
                 )
             }
