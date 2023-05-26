@@ -12,7 +12,7 @@ export const InputText = ({ label }: InputTextProps) => {
       <input
         type="text"
         id=""
-        className="text-sm border-2 border-primary-l4 transition duration-300 rounded-md ij-shadow-base focus:outline-none hover:border-primary w-full h-12 p-5"
+        className="text-sm border-2 border-primary-l4 transition duration-300 rounded-md focus:shadow-ij-focus focus:outline-none hover:border-primary w-full h-12 p-5"
       />
       </div>
     </div>
