@@ -1,14 +1,25 @@
+"use client"
+import { useBeforeUnload } from "@/hooks/useBeforeUnload";
+import { FieldValues, SubmitHandler, UseFormReturn, useForm } from "react-hook-form";
 import { Button } from "../ui/Button";
 
-export const Fieldset = ({
+type FormProps<TFormValues extends FieldValues> = {
+  title: string;
+  onSubmit: SubmitHandler<TFormValues>;
+  children: (methods: UseFormReturn<TFormValues>) => React.ReactNode;
+};
+
+export const Fieldset = <TFormValues extends FieldValues>({
   children,
   title,
-}: {
-  children: React.ReactNode | React.ReactNode[];
-  title: string;
-}) => {
+  onSubmit,
+}: FormProps<TFormValues>) => {
+
+  const methods = useForm<TFormValues>();
+  useBeforeUnload(methods.formState.isDirty, "¿Estás seguro de salir sin guardar?")
+
   return (
-    <form>
+    <form onSubmit={methods.handleSubmit(onSubmit,)} >
       <div className="border border-ij-gray-l4 rounded-md">
         <fieldset className="border-none p-0 m-0">
           <legend className="bg-primary-l4  p-4 w-full rounded-t-md border-b border-ij-gray-l4">
@@ -16,12 +27,12 @@ export const Fieldset = ({
               {title}
             </span>
           </legend>
-          <div className="p-3">{children}</div>
+          <div className="p-3">{children(methods)}</div>
         </fieldset>
         <div className="p-3">
           <Button>Guardar</Button>
         </div>
       </div>
-    </form>
+    </form >
   );
 };

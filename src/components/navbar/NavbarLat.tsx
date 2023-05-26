@@ -28,7 +28,7 @@ export const NavbarLat = () => {
     <div className='fixed w-2/12' >
 
       <nav className="p-3 w-full">
-        <div className='font-black text-ij-white text-3xl mb-5' >  INFOJOBS  </div>
+        <div className='font-black text-ij-white text-3xl mb-5' >  JOSE  </div>
         <h6 className="text-primary-l4 opacity-60 border-b border-white/40 pb-3 font-semibold uppercase tracking-widest " >Tu perfil</h6>
         <div className='mt-3' >
           {

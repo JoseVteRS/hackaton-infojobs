@@ -1,20 +1,29 @@
-interface InputTextProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-}
+import { forwardRef } from "react";
 
-export const InputText = ({ label }: InputTextProps) => {
+type InputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
+  label: string;
+};
+
+
+export const InputText = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+
   return (
-    <div className="relative w-full">
+    <div className="relative w-full mb-4">
       <span className="flex text-sm mb-1 relative">
-        <label>{label}</label>
+        <label>{props.label}</label>
       </span>
       <div>
-      <input
-        type="text"
-        id=""
-        className="text-sm border-2 border-primary-l4 transition duration-300 rounded-md focus:shadow-ij-focus focus:outline-none hover:border-primary w-full h-12 p-5"
-      />
+        <input
+          type="text"
+          className="text-sm border-2 border-primary-l4 transition duration-300 rounded-md focus:shadow-ij-focus focus:outline-none hover:border-primary w-full h-12 p-5"
+          ref={ref}
+          {...props}
+        />
       </div>
+      <span className="text-error text-xs mt-1" >Error</span>
     </div>
   );
-};
+});

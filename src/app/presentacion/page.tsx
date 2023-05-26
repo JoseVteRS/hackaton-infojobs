@@ -1,6 +1,4 @@
-import { Fieldset } from "@/components/forms/Fieldset";
-import { InputText } from "@/components/forms/InputText";
-import { Textarea } from "@/components/forms/Textarea";
+import { FormPresentation } from "@/components/forms/FormPresentation";
 
 
 export default function PresentationPage() {
@@ -10,11 +8,7 @@ export default function PresentationPage() {
       <h3 className="my-6 text-2xl text-black/80 font-semibold">
         Presentación
       </h3>
-      <Fieldset title="Introducción">
-        <InputText label="Headline" />
-        <InputText label="Headline" />
-        <Textarea label="Resumen" />
-      </Fieldset>
+      <FormPresentation />
     </>
   );
 }
