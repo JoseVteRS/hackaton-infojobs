@@ -10,6 +10,7 @@ const LINKS = [
   { href: '/conocimientos-y-educacion', label: 'Conocimientos y educación', icon: 'megaphone' },
   { href: '/idomas', label: 'Idomas', icon: 'megaphone' },
   { href: '/experiencia-laboral', label: 'Experiencia laboral', icon: 'megaphone' },
+  { href: '/perfil/', label: 'Previsualizar curriculum', icon: 'megaphone' },
 ]
 
 
