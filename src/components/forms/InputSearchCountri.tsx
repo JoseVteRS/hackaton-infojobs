@@ -1,3 +1,4 @@
+"use client"
 import { forwardRef } from "react";
 
 type InputProps = React.DetailedHTMLProps<
@@ -7,8 +8,9 @@ type InputProps = React.DetailedHTMLProps<
   label: string;
 };
 
-export const InputText = forwardRef<HTMLInputElement, InputProps>(
-  (props, ref) => {
+export const InputSearchCountry = forwardRef<HTMLInputElement, InputProps>(
+  (props, ref) => { 
+
     return (
       <div className="relative w-full mb-4">
         <span className="flex text-sm mb-1 relative">
@@ -25,4 +27,4 @@ export const InputText = forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-InputText.displayName = "InputText";
+InputSearchCountry.displayName = "InputSearchCountry";

@@ -1,13 +1,20 @@
-import { Dosis } from "next/font/google";
+import { Dosis, Bodoni_Moda } from "next/font/google";
 import cx from "classnames";
 
-const dosis = Dosis({ subsets: ["latin"] });
+const dosis = Dosis({ subsets: ["latin"], weight: ["600", "800"] });
+const bodoni = Bodoni_Moda({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "700"],
+});
 
-interface HeadingProps {
+interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   children: React.ReactNode;
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   size: keyof typeof SIZE;
   kind: keyof typeof KIND;
+  fontStyles?: keyof typeof FONT_FAMILY;
+  withDecoration?: boolean;
 }
 
 const KIND: { [key: string]: string } = {
@@ -18,52 +25,74 @@ const KIND: { [key: string]: string } = {
 };
 
 const SIZE = {
-  small: "text-sm",
-  medium: "text-base",
-  large: "text-3xl",
-  xlarge: "text-4xl",
+  small: "text-2xl",
+  medium: "text-3xl",
+  large: "text-4xl",
+  xlarge: "text-6xl",
 };
 
-const sizerUnderline =  (size: keyof typeof SIZE)=> {
-    switch (size) {
-        case "small":
-            return "h-[1px]"
-        case "medium":
-            return"h-[3px]"
-        case "large":
-            return "h-[5px]"
-        case "xlarge":
-            return"h-[6px]"
-        default:
-            return "h-[3px]"
-    }
-}
+const FONT_FAMILY = {
+  dosis: dosis.className,
+  bodoni: bodoni.className,
+};
+
+const sizerUnderline = (size: keyof typeof SIZE) => {
+  switch (size) {
+    case "small":
+      return "h-[1px]";
+    case "medium":
+      return "h-[3px]";
+    case "large":
+      return "h-[5px]";
+    case "xlarge":
+      return "h-[12px]";
+    default:
+      return "h-[3px]";
+  }
+};
 
 const colorUnderline = (size: keyof typeof SIZE) => {
-    switch (size) {
-        case "small":
-            return "bg-ij-black"
-        case "medium":
-            return"bg-primary"
-        case "large":
-            return "bg-accent"
-        case "xlarge":
-            return"bg-primary"
-        default:
-            return "bg-primary"
-    }
-}
+  switch (size) {
+    case "small":
+      return "bg-ij-black";
+    case "medium":
+      return "bg-primary";
+    case "large":
+      return "bg-accent";
+    case "xlarge":
+      return "bg-primary";
+    default:
+      return "bg-primary";
+  }
+};
 
-const Heading = ({ children, as: As, kind, size }: HeadingProps) => {
-  const classNames = cx(`uppercase ${dosis.className}`, {
+const Heading = ({
+  children,
+  as: As,
+  kind,
+  size,
+  className,
+  withDecoration = false,
+  fontStyles = "bodoni",
+  ...restProps
+}: HeadingProps) => {
+  const classNames = cx(`font-bold ${className}`, {
     [KIND[kind]]: kind,
-    [SIZE[size]]: sizerUnderline(size)
+    [SIZE[size]]: sizerUnderline(size),
+    [FONT_FAMILY[fontStyles]]: fontStyles,
   });
 
   return (
     <>
-      <div className={`${colorUnderline(size)} ${sizerUnderline(size)} w-12  mt-5 `}></div>
-      <As className={`${dosis.className} ${classNames} `}>{children}</As>
+      {withDecoration && (
+        <div
+          className={`${colorUnderline(size)} ${sizerUnderline(
+            size
+          )} w-20  mt-5 `}
+        ></div>
+      )}
+
+      <As className={` ${classNames} `}>{children}</As>
     </>
   );
 };

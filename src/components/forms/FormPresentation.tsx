@@ -6,8 +6,8 @@ import { InputText } from './InputText';
 import { Textarea } from './Textarea';
 
 type FormValues = {
-    "name": string;
-    "surname": string;
+    "headline": string;
+    "introduction": string;
     "summary": string;
 }
 
@@ -23,13 +23,12 @@ export const FormPresentation = () => {
 
 
     return (
-        <Fieldset<FormValues> onSubmit={onSubmit} title="Introducción">
+        <Fieldset<FormValues> onSubmit={onSubmit} title="Introducción" localStorage={LOCAL_STORAGE_KEYS.PRESENTATION}>
             {
-                ({ register }) => (
+                ({ register }, localData) => (
                     <>
-                        <InputText label="Nombre" {...register("name")} value={presentationData?.name} />
-                        <InputText label={`Apellido`} {...register("surname")} value={presentationData?.surname} />
-                        <Textarea label="Resumen" {...register("summary")} value={presentationData?.summary} />
+                        <InputText label="Headline" defaultValue={localData.headline} {...register("headline")} />
+                        <Textarea label="Resumen" defaultValue={localData.summary} {...register("summary")}  />
                     </>
                 )
             }
