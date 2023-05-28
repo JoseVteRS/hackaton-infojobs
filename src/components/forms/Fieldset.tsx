@@ -1,6 +1,6 @@
-"use client";
 import { useBeforeUnload } from "@/hooks/useBeforeUnload";
 import {
+  DeepPartial,
   FieldValues,
   SubmitHandler,
   UseFormReturn,
@@ -13,8 +13,10 @@ import { useEffect, useState } from "react";
 type FormProps<TFormValues extends FieldValues> = {
   title: string;
   onSubmit: SubmitHandler<TFormValues>;
-  localStorage: string
-  children: (methods: UseFormReturn<TFormValues>, localData: any) => React.ReactNode;
+  localStorage: string;
+  children: (
+    methods: UseFormReturn<TFormValues>,
+  ) => React.ReactNode;
 };
 
 export const Fieldset = <TFormValues extends FieldValues>({
@@ -22,15 +24,17 @@ export const Fieldset = <TFormValues extends FieldValues>({
   title,
   onSubmit,
   localStorage,
-}: FormProps<TFormValues>) => {
-const [localData, setLocalData] = useState({})
+}: FormProps<TFormValues>): JSX.Element => {
+// Corrección: Utilizar DeepPartial<TFormValues> en lugar de Record<string, unknown>
+
+  const methods = useForm<TFormValues>();
+
   useEffect(() => {
     const data = window?.localStorage.getItem(localStorage);
     const dataParsed = JSON.parse(data || "{}");
-    setLocalData(dataParsed)
-  }, [localStorage]);
-
-  const methods = useForm<TFormValues>();
+    methods.reset(dataParsed); 
+ 
+  }, [localStorage, methods]);
 
   useBeforeUnload(
     methods.formState.isDirty,
@@ -46,7 +50,7 @@ const [localData, setLocalData] = useState({})
               {title}
             </span>
           </legend>
-          <div className="p-3">{children(methods, localData)}</div>
+          <div className="p-3">{children(methods)}</div>
         </fieldset>
         <div className="p-3">
           <Button>Guardar</Button>

@@ -1,0 +1,17 @@
+[
+  { "id": "1", "name": "Comunicación efectiva" },
+  { "id": "2", "name": "Trabajo en equipo" },
+  { "id": "3", "name": "Resolución de problemas" },
+  { "id": "4", "name": "Flexibilidad" },
+  { "id": "5", "name": "Creatividad" },
+  { "id": "6", "name": "Liderazgo" },
+  { "id": "7", "name": "Empatía" },
+  { "id": "8", "name": "Pensamiento crítico" },
+  { "id": "9", "name": "Gestión del tiempo" },
+  { "id": "10", "name": "Adaptabilidad" },
+  { "id": "11", "name": "Resiliencia" },
+  { "id": "12", "name": "Orientación al cliente" },
+  { "id": "13", "name": "Pensamiento estratégico" },
+  { "id": "14", "name": "Toma de decisiones" },
+  { "id": "15", "name": "Gestión de conflictos" }
+]

@@ -11,7 +11,7 @@ export const InputText = forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {
     return (
       <div className="relative w-full mb-4">
-        <span className="flex text-sm mb-1 relative">
+        <span className="flex text-sm mb-1 relative font-semibold">
           <label>{props.label}</label>
         </span>
         <input

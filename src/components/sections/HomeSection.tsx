@@ -1,31 +1,29 @@
 "use client";
+import { Bodoni_Moda } from "next/font/google";
 
 import { LOCAL_STORAGE_KEYS } from "@/config/contants";
-import { LocationIcon } from "../icons/location";
-import Heading from "../ui/Heading";
-import Link from "next/link";
-import { Bodoni_Moda } from "next/font/google";
+
+import Heading from "@/components/ui/Heading";
+import { Separator } from "@/components/ui/Separator";
 import { InfoGeneral } from "./InfoGeneral";
-import { Separator } from "../ui/Separator";
 
 const bodoni = Bodoni_Moda({ subsets: ["latin"], style: ["normal", "italic"] });
 
 export const HomeSection = () => {
-  // const [presentationValues] = useLocalStorage(LOCAL_STORAGE_KEYS.PRESENTATION)
 
   const dataContact = window?.localStorage.getItem(LOCAL_STORAGE_KEYS.CONTACT);
   const dataContactParsed = JSON.parse(dataContact || "{}");
 
-  const dataPresentation = window?.localStorage.getItem( LOCAL_STORAGE_KEYS.PRESENTATION);
+  const dataPresentation = window?.localStorage.getItem(
+    LOCAL_STORAGE_KEYS.PRESENTATION
+  );
   const dataPresentationParsed = JSON.parse(dataPresentation || "{}");
 
   console.log({ dataParsed: dataContactParsed });
 
   if (!dataContactParsed) return <div>no hay data</div>;
 
-  
   const splitSummaryByReturn = dataPresentationParsed.summary.split("\n");
-
 
   return (
     <section>
