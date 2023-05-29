@@ -8,4 +8,5 @@ export const LOCAL_STORAGE_KEYS = {
     LANGUAGE: '__Language__',
     INTEREST: '__Interest__',
     ACHIEVEMENT: '__Achievement__',
+    TOOLS: '__Tools__',
 };

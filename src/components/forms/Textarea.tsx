@@ -10,10 +10,12 @@ type TextareaProps = React.DetailedHTMLProps<
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (props, ref) => {
     return (
-      <label className="mb-5 inline-block w-full">
-        <span className="block text-sm font-bold text-ij-black">
-          {props.label}
-        </span>
+      <>
+        <label className="mb-5 inline-block w-full">
+          <span className="block text-sm font-bold text-ij-black">
+            {props.label}
+          </span>
+        </label>
         <textarea
           rows={22}
           className="resize-y text-sm border-2 border-primary-l4 transition duration-300 rounded-md focus:shadow-md focus:shadow-primary hover:border-primary w-full p-2"
@@ -27,7 +29,7 @@ Durante años, he compartido mi entusiasmo por un proyecto desafiante que plante
           ref={ref}
           {...props}
         ></textarea>
-      </label>
+      </>
     );
   }
 );

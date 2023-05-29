@@ -5,14 +5,18 @@ type InputProps = React.DetailedHTMLProps<
   HTMLInputElement
 > & {
   label: string;
+  isRequired?: boolean;
 };
 
 export const InputText = forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {
     return (
       <div className="relative w-full mb-4">
-        <span className="flex text-sm mb-1 relative font-semibold">
+        <span className="flex text-sm mb-1 gap-1 relative font-semibold">
           <label>{props.label}</label>
+          {props?.isRequired && (
+            <span className="text-ij-gray font-normal">Obligatorio</span>
+          )}
         </span>
         <input
           type="text"

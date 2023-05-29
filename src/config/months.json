@@ -1,0 +1,14 @@
+[
+  { "name": "Enero", "abbreviation": "Ene" },
+  { "name": "Febrero", "abbreviation": "Feb" },
+  { "name": "Marzo", "abbreviation": "Mar" },
+  { "name": "Abril", "abbreviation": "Abr" },
+  { "name": "Mayo", "abbreviation": "May" },
+  { "name": "Junio", "abbreviation": "Jun" },
+  { "name": "Julio", "abbreviation": "Jul" },
+  { "name": "Agosto", "abbreviation": "Ago" },
+  { "name": "Septiembre", "abbreviation": "Sep" },
+  { "name": "Octubre", "abbreviation": "Oct" },
+  { "name": "Noviembre", "abbreviation": "Nov" },
+  { "name": "Diciembre", "abbreviation": "Dic" }
+]
