@@ -1,20 +1,34 @@
 "use client";
 import { LOCAL_STORAGE_KEYS } from "@/config/contants";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { Fieldset } from "./Fieldset";
-import { InputText } from "./InputText";
-import { Textarea } from "./Textarea";
 import { Fragment } from "react";
 import { Separator } from "../ui/Separator";
-import { SelectSkills } from "./SelectSkills";
-import softSkills from "@/config/soft-skills.json";
+import { Fieldset } from "./Fieldset";
+import { InputText } from "./InputText";
+import { SelectSoftSkills } from "./Select/select";
+import { Textarea } from "./Textarea";
 
-type FormValues = {
+type FormValuesIntroduction = {
   headline: string;
-  introduction: string;
   summary: string;
-  softskills: [{ id: string; name: string }];
 };
+
+type FormValuesSkills = {
+  skills: [{ id: string; name: string }];
+}
+
+
+const softskillsOptions = [
+  { value: "1", label: "Trabajo en equipo" },
+  { value: "2", label: "Comunicación" },
+  { value: "3", label: "Creatividad" },
+  { value: "4", label: "Adaptabilidad" },
+  { value: "5", label: "Resolución de problemas" },
+  { value: "6", label: "Pensamiento crítico" },
+  { value: "7", label: "Responsabilidad" },
+  { value: "8", label: "Liderazgo" },
+  { value: "9", label: "Organización" },
+];
 
 export const FormPresentation = () => {
   const [, setStoredValue] = useLocalStorage(
@@ -26,14 +40,19 @@ export const FormPresentation = () => {
   );
   const presentationData = JSON.parse(localStorage || "{}");
 
-  const onSubmit = (data: FormValues) => {
-    setStoredValue(data);
+  const onSubmitIntroduction = (data: FormValuesIntroduction) => {
+    setStoredValue((oldData: FormValuesIntroduction) => ({ ...oldData, ...data }))
+  };
+
+  const onSubmitSkills = (data: FormValuesSkills) => {
+    console.log({ data })
+    setStoredValue((oldData: FormValuesSkills) => ({ ...oldData, ...data }))
   };
 
   return (
     <Fragment>
-      <Fieldset<FormValues>
-        onSubmit={onSubmit}
+      <Fieldset<FormValuesIntroduction>
+        onSubmit={onSubmitIntroduction}
         title="Introducción"
         localStorage={LOCAL_STORAGE_KEYS.PRESENTATION}
       >
@@ -45,21 +64,28 @@ export const FormPresentation = () => {
         )}
       </Fieldset>
       <Separator size="lg" />
-      <Fieldset<FormValues>
-        onSubmit={onSubmit}
+
+      <Fieldset<FormValuesSkills>
+        onSubmit={onSubmitSkills}
         title="Competencias"
         localStorage={LOCAL_STORAGE_KEYS.PRESENTATION}
       >
-        {({ register }) => (
-          <>
-            <SelectSkills
-            label="Competencias"
-            options={softSkills}
-              {...register("softskills")}
-            />
-          </>
-        )}
+        {
+          (methods) => {
+            return (
+              <>
+                <SelectSoftSkills
+                  label="Habilidades"
+                   options={softskillsOptions}
+                  {...methods.register("skills")}
+                />
+              </>
+            );
+          }
+        }
+
       </Fieldset>
+
     </Fragment>
   );
 };

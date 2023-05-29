@@ -1,10 +1,9 @@
 "use client";
-import { Bodoni_Moda } from "next/font/google";
-
-import { LOCAL_STORAGE_KEYS } from "@/config/contants";
-
 import Heading from "@/components/ui/Heading";
 import { Separator } from "@/components/ui/Separator";
+import { LOCAL_STORAGE_KEYS } from "@/config/contants";
+import skills from "@/config/soft-skills.json";
+import { Bodoni_Moda } from "next/font/google";
 import { InfoGeneral } from "./InfoGeneral";
 
 const bodoni = Bodoni_Moda({ subsets: ["latin"], style: ["normal", "italic"] });
@@ -19,9 +18,12 @@ export const HomeSection = () => {
   );
   const dataPresentationParsed = JSON.parse(dataPresentation || "{}");
 
-  console.log({ dataParsed: dataContactParsed });
+  const findSkills = (value: Option[]) => {
+    const skill = skills.find((skill) => skill.value === value);
+    return skill?.label || "";
+  };
 
-  if (!dataContactParsed) return <div>no hay data</div>;
+  if (!dataContactParsed) return <div>No hay data</div>;
 
   const splitSummaryByReturn = dataPresentationParsed.summary.split("\n");
 
@@ -58,6 +60,24 @@ export const HomeSection = () => {
       <Separator size="lg" />
 
       <InfoGeneral introduction={splitSummaryByReturn} />
+
+      {
+        dataPresentationParsed.skills.map((skill) => (
+
+          <div key={skill.value}>
+            <Separator size="lg" />
+            <Heading
+              as="h3"
+              size="large"
+              kind="black"
+              className="my-6 font-normal text-3xl italic"
+            >
+              {skill.label}
+            </Heading>
+          </div>
+
+        ))
+      }
     </section>
   );
 };

@@ -1,5 +1,5 @@
-import { Dosis, Bodoni_Moda } from "next/font/google";
 import cx from "classnames";
+import { Bodoni_Moda, Dosis } from "next/font/google";
 
 const dosis = Dosis({ subsets: ["latin"], weight: ["600", "800"] });
 const bodoni = Bodoni_Moda({
@@ -39,15 +39,15 @@ const FONT_FAMILY = {
 const sizerUnderline = (size: keyof typeof SIZE) => {
   switch (size) {
     case "small":
-      return "h-[1px]";
+      return "h-[1px] w-5";
     case "medium":
-      return "h-[3px]";
+      return "h-[3px] w-10";
     case "large":
-      return "h-[5px]";
+      return "h-[8px] w-12";
     case "xlarge":
-      return "h-[12px]";
+      return "h-[12px] w-14";
     default:
-      return "h-[3px]";
+      return "h-[3px] w-10";
   }
 };
 
@@ -58,7 +58,7 @@ const colorUnderline = (size: keyof typeof SIZE) => {
     case "medium":
       return "bg-primary";
     case "large":
-      return "bg-accent";
+      return "bg-primary-l2";
     case "xlarge":
       return "bg-primary";
     default:
@@ -88,7 +88,7 @@ const Heading = ({
         <div
           className={`${colorUnderline(size)} ${sizerUnderline(
             size
-          )} w-20  mt-5 `}
+          )}  mt-5 `}
         ></div>
       )}
 
