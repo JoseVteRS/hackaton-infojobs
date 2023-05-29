@@ -42,6 +42,9 @@ export const FormEducation = () => {
     {}
   );
 
+  const localStorageEducation = localStorage.getItem(LOCAL_STORAGE_KEYS.EDUCATION);
+  const localStorageEducationValue = localStorageEducation ? JSON.parse(localStorageEducation) : [];
+
   const onSubmitTools = (values: FormValuesTools) => {
     setStoredTools((oldData: FormValuesTools) => ({
       ...oldData,
@@ -50,10 +53,11 @@ export const FormEducation = () => {
   };
 
   const onSubmitEducation = (values: FormValuesEducation) => {
-    setStoredEducation((oldData: Education[]) => ({
-      ...oldData,
-      educations: [{ ...values, id: generateUUID() }],
-    }));
+    console.log(localStorageEducationValue);
+    setStoredEducation((oldData: Education[]) => {
+      const newEducation = { ...values, id: generateUUID() };
+      return [...oldData, newEducation];
+    });
   };
 
   return (

@@ -5,11 +5,13 @@ import { LOCAL_STORAGE_KEYS } from "@/config/contants";
 import skills from "@/config/soft-skills.json";
 import { Bodoni_Moda } from "next/font/google";
 import { InfoGeneral } from "./InfoGeneral";
+import { LenguagesSection } from "./Lenguages";
+import { SkillsSection } from "./Skills";
+import { ToolsSection } from "./Tools";
 
 const bodoni = Bodoni_Moda({ subsets: ["latin"], style: ["normal", "italic"] });
 
 export const HomeSection = () => {
-
   const dataContact = window?.localStorage.getItem(LOCAL_STORAGE_KEYS.CONTACT);
   const dataContactParsed = JSON.parse(dataContact || "{}");
 
@@ -60,24 +62,11 @@ export const HomeSection = () => {
       <Separator size="lg" />
 
       <InfoGeneral introduction={splitSummaryByReturn} />
+      <SkillsSection />
+      <LenguagesSection />
 
-      {
-        dataPresentationParsed.skills.map((skill) => (
+      <ToolsSection />
 
-          <div key={skill.value}>
-            <Separator size="lg" />
-            <Heading
-              as="h3"
-              size="large"
-              kind="black"
-              className="my-6 font-normal text-3xl italic"
-            >
-              {skill.label}
-            </Heading>
-          </div>
-
-        ))
-      }
     </section>
   );
 };
