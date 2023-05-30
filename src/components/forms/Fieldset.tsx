@@ -12,7 +12,7 @@ import { Button } from "../ui/Button";
 type FormProps<TFormValues extends FieldValues> = {
   title: string;
   onSubmit: SubmitHandler<TFormValues>;
-  localStorage: string;
+  localStorageKey: string;
   children: (
     methods: UseFormReturn<TFormValues>,
   ) => React.ReactNode;
@@ -22,18 +22,20 @@ export const Fieldset = <TFormValues extends FieldValues>({
   children,
   title,
   onSubmit,
-  localStorage,
+  localStorageKey,
 }: FormProps<TFormValues>): JSX.Element => {
 
 
   const methods = useForm<TFormValues>();
 
   useEffect(() => {
-    const data = window?.localStorage.getItem(localStorage);
+    if(typeof window === 'undefined') return;
+    const data = localStorage.getItem(localStorageKey);
     const dataParsed = JSON.parse(data || "{}");
+
     methods.reset(dataParsed); 
  
-  }, [localStorage, methods]);
+  }, [localStorageKey, methods]);
 
   useBeforeUnload(
     methods.formState.isDirty,

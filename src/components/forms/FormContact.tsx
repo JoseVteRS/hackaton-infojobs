@@ -37,7 +37,7 @@ export const FormContact = () => {
       <Fieldset<FormValuesIntroduction>
         onSubmit={onSubmitIntroduction}
         title="Introducción"
-        localStorage={LOCAL_STORAGE_KEYS.CONTACT}
+        localStorageKey={LOCAL_STORAGE_KEYS.CONTACT}
       >
         {({ register }) => {
           return (
@@ -73,7 +73,7 @@ export const FormContact = () => {
       <Fieldset<FormValuesLinks>
         onSubmit={onSubmitLinks}
         title="Perfiles y sitios web"
-        localStorage={LOCAL_STORAGE_KEYS.CONTACT}
+        localStorageKey={LOCAL_STORAGE_KEYS.CONTACT}
       >
         {({ register }) => {
           return (

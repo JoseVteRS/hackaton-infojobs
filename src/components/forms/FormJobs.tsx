@@ -77,7 +77,7 @@ export const FormJobs = () => {
       <Fieldset<FormValueYear>
         onSubmit={onSubmitYear}
         title="Años de experiencia"
-        localStorage={LOCAL_STORAGE_KEYS.JOBS}
+        localStorageKey={LOCAL_STORAGE_KEYS.JOBS}
       >
         {({ register }) => {
           return (
@@ -105,7 +105,7 @@ export const FormJobs = () => {
         <Fieldset<FormValuesJobs>
           onSubmit={onSubmitJobs}
           title="Trabajos"
-          localStorage={LOCAL_STORAGE_KEYS.JOBS}
+          localStorageKey={LOCAL_STORAGE_KEYS.JOBS}
         >
           {({ register, watch }) => {
             const isCurrent = watch("isCurrent");

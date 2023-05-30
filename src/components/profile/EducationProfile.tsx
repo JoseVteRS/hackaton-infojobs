@@ -18,7 +18,7 @@ export const EducationProfile = () => {
 
         <Separator size="md" />
 
-        <Timeline items={tools.educations} />
+        <Timeline items={tools?.educations} />
       </div>
     </section>
   );

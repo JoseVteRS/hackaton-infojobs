@@ -39,7 +39,7 @@ export const FormPresentation = () => {
       <Fieldset<FormValuesIntroduction>
         onSubmit={onSubmitIntroduction}
         title="Introducción"
-        localStorage={LOCAL_STORAGE_KEYS.PRESENTATION}
+        localStorageKey={LOCAL_STORAGE_KEYS.PRESENTATION}
       >
         {({ register }) => (
           <>
@@ -53,7 +53,7 @@ export const FormPresentation = () => {
       <Fieldset<FormValuesSkills>
         onSubmit={onSubmitSkills}
         title="Competencias"
-        localStorage={LOCAL_STORAGE_KEYS.PRESENTATION}
+        localStorageKey={LOCAL_STORAGE_KEYS.PRESENTATION}
       >
         {(methods) => {
           return (

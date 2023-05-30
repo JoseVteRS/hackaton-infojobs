@@ -47,7 +47,7 @@ export const FormEducation = () => {
     setTools((oldData: FormValuesTools) => ({
       ...oldData,
       educations: [
-        ...oldData.educations,
+        ...oldData?.educations,
         {
           id: generateUUID(),
           ...data,
@@ -58,9 +58,9 @@ export const FormEducation = () => {
 
   return (
     <Fragment>
-      {tools.educations.length > 0 && (
+      {tools?.educations && (
         <div className="my-5 flex items-start gap-5">
-          {tools.educations.map((education: Education) => {
+          {tools?.educations?.map((education: Education) => {
             return (
               <div key={education.id} className="shadow-ij-m p-3 rounded">
                 <h3 className="text-lg font-semibold text-gray-900 ">
@@ -81,7 +81,7 @@ export const FormEducation = () => {
       <Fieldset<FormValuesTools>
         onSubmit={onSubmitTools}
         title="Educación"
-        localStorage={LOCAL_STORAGE_KEYS.TOOLS}
+        localStorageKey={LOCAL_STORAGE_KEYS.TOOLS}
       >
         {({ register }) => (
           <>
@@ -102,7 +102,7 @@ export const FormEducation = () => {
         <Fieldset<FormValuesEducation>
           onSubmit={onSubmitEducation}
           title="Educación"
-          localStorage={LOCAL_STORAGE_KEYS.TOOLS}
+          localStorageKey={LOCAL_STORAGE_KEYS.TOOLS}
         >
           {({ register }) => (
             <>

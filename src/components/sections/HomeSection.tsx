@@ -8,19 +8,21 @@ import { LenguagesProfile } from "../profile/LenguagesProfile";
 import { ToolsProfile } from "../profile/ToolsProfile";
 import { EducationProfile } from "../profile/EducationProfile";
 import { JobsProfile } from "../profile/JobsProfile";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 
 
 export const HomeSection = () => {
-  const dataContact = window?.localStorage.getItem(LOCAL_STORAGE_KEYS.CONTACT);
-  const dataContactParsed = JSON.parse(dataContact || "{}");
+
+const [contact] = useLocalStorage(LOCAL_STORAGE_KEYS.CONTACT);
+
 
   const dataPresentation = window?.localStorage.getItem(
     LOCAL_STORAGE_KEYS.PRESENTATION
   );
   const dataPresentationParsed = JSON.parse(dataPresentation || "{}");
 
-  if (!dataContactParsed) return <div>No hay data</div>;
+  if (!contact) return <div>No hay data</div>;
 
   const splitSummaryByReturn = dataPresentationParsed.summary.split("\n");
 
@@ -34,7 +36,7 @@ export const HomeSection = () => {
           withDecoration
           className="text-6xl"
         >
-          {dataContactParsed.name} {dataContactParsed.surname}
+          {contact.name} {contact.surname}
         </Heading>
 
         <Heading
@@ -49,7 +51,7 @@ export const HomeSection = () => {
         <h2 className={`italic text-2xl my-5 `}>
           En{" "}
           <strong className={`italic text-2xl font-bold `}>
-            {dataContactParsed.country}
+            {contact.country}
           </strong>
         </h2>
       </div>

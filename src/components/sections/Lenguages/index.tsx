@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
 import { FormLenguages, Lenguage, Lenguages } from "@/components/forms/FormLenguages";
 import { TrashIcon } from "@/components/icons/trash-icon";
 import { LOCAL_STORAGE_KEYS } from "@/config/contants";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import React from "react";
+
 
 export const LenguagesSection = () => {
   const [lenguages, setLenguages] = useLocalStorage(
@@ -13,12 +13,14 @@ export const LenguagesSection = () => {
 
 
   const onDeleteLeguange = (id: string) => {
-    console.log(id)
+    
     setLenguages((oldData: Lenguages) => ({
       ...oldData,
       lenguages: oldData.lenguages.filter((education: Lenguage) => education.id !== id)
     }));
   }
+
+
 
   return (
     <section>
@@ -42,7 +44,7 @@ export const LenguagesSection = () => {
                     </div>
 
                     <button
-                      onClick={() => onDeleteLeguange(lenguage.id)}
+                      
                       className="text-error font-bold flex items-center gap-1"
                     >
                       <TrashIcon />

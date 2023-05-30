@@ -1,4 +1,3 @@
-'use client'
 import { LenguagesSection } from "@/components/sections/Lenguages"
 
 export default function LenguagesPage()  {
