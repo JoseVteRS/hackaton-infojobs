@@ -36,7 +36,7 @@ const ICON_MAP: IconMapType = {
 export const NavbarLat = () => {
 
   return (
-    <div className='fixed w-2/12' >
+    <div className='fixed w-2/12 bg-primary mi-h-screen' >
 
       <nav className="w-full">
         <div className='font-black text-ij-white text-3xl mb-5 bg-white p-5' >
@@ -44,7 +44,7 @@ export const NavbarLat = () => {
             <LogoInfoJobs className="w-8 h-8"  />
           </Link>
         </div>
-        <div className='px-5'>
+        <div className='px-5 bg-primary'>
         <h6 className="text-primary-l4 opacity-60 border-b border-white/40 pb-3 font-semibold uppercase tracking-widest " >Tu perfil</h6>
         <div className='mt-3' >
           {

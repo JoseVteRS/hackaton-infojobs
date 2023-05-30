@@ -4,7 +4,7 @@ import React from "react";
 const PortalLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex gap-2">
-      <div className="h-screen w-2/12 bg-primary">
+      <div className="h-screen w-2/12 bg-primary z-50">
         <NavbarLat />
       </div>
       <main className="w-8/12">
