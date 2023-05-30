@@ -93,6 +93,32 @@ export const FormEducation = () => {
 
       <Separator size="lg" />
 
+      <div className="flex flex-wrap min-w-1/2 gap-3 mb-5" >
+
+        {localStorageEducationValue.educations.map((education: Education) => (
+          <div key={education.id} className="shadow-ij-m p-3 rounded min-w-full" >
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-ij-blue">
+                  {education.type}
+                </h3>
+                <p className="text-sm text-ij-black">
+                  {education.start_month} {education.start_year} -{" "}
+                  {education.finish_month} {education.finish_year}
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <button className="text-sm text-ij-blue">Editar</button>
+                <button className="text-sm text-ij-red">Eliminar</button>
+              </div>
+            </div>
+            <p className="text-sm text-ij-black">{education.description}</p>
+            <p className="text-sm text-ij-black">{education.emisor}</p>
+          </div>
+        ))
+        }
+      </div>
+
       <Modal title="Añade una educación">
         <Fieldset<FormValuesEducation>
           onSubmit={onSubmitEducation}
