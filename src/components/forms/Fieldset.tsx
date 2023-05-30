@@ -1,3 +1,4 @@
+'use client'
 import { useBeforeUnload } from "@/hooks/useBeforeUnload";
 import { useEffect } from "react";
 import {
