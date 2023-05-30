@@ -1,15 +1,15 @@
 'use client'
 import Link from 'next/link';
+import { ReactElement } from 'react';
 import { IDCardIcon } from '../icons/id-card';
 import { MegaphoneIcon } from '../icons/megaphone-icon';
-import { ReactElement } from 'react';
 
 
 const LINKS = [
   { href: '/portal/contacto', label: 'Información básica', icon: 'id-card' },
   { href: '/portal/presentacion', label: 'Presentacion', icon: 'megaphone' },
   { href: '/portal/conocimientos-y-educacion', label: 'Conocimientos y educación', icon: 'megaphone' },
-  { href: '/portal/idomas', label: 'Idomas', icon: 'megaphone' },
+  { href: '/portal/idiomas', label: 'Idomas', icon: 'megaphone' },
   { href: '/portal/experiencia-laboral', label: 'Experiencia laboral', icon: 'megaphone' },
   { href: '/perfil/:id', label: 'Previsualizar curriculum', icon: 'megaphone' },
 ]
