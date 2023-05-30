@@ -10,7 +10,7 @@ import { ToolsProfile } from "../profile/ToolsProfile";
 import { EducationProfile } from "../profile/EducationProfile";
 import { JobsProfile } from "../profile/JobsProfile";
 
-const bodoni = Bodoni_Moda({ subsets: ["latin"], style: ["normal", "italic"] });
+const bodoni = Bodoni_Moda({ subsets: ["latin"], style: ["normal", "italic"], display: "swap" });
 
 export const HomeSection = () => {
   const dataContact = window?.localStorage.getItem(LOCAL_STORAGE_KEYS.CONTACT);

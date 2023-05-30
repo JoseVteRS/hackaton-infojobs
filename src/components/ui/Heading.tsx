@@ -6,6 +6,7 @@ const bodoni = Bodoni_Moda({
   subsets: ["latin"],
   style: ["normal", "italic"],
   weight: ["400", "700"],
+  display: "swap",
 });
 
 interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
