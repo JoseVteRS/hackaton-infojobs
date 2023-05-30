@@ -37,18 +37,7 @@ export const SelectSoftSkills = forwardRef<HTMLInputElement, InputProps>(
             }
         }, [showMenu]);
 
-        useEffect(() => {
-            const handleClickOutside = (event: MouseEvent) => {
-                if (inputRef.current && !inputRef.current.contains(event.target as Node)) {
-                    setShowMenu(false);
-                }
-            };
 
-            window.addEventListener("click", handleClickOutside);
-            return () => {
-                window.removeEventListener("click", handleClickOutside);
-            };
-        }, []);
 
         const handleInputClick = () => {
             setShowMenu(!showMenu);

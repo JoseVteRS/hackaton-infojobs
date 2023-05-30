@@ -9,4 +9,5 @@ export const LOCAL_STORAGE_KEYS = {
     INTEREST: '__Interest__',
     ACHIEVEMENT: '__Achievement__',
     TOOLS: '__Tools__',
+    JOBS: '__Jobs__',
 };

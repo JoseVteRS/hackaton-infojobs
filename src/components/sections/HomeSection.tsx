@@ -2,12 +2,13 @@
 import Heading from "@/components/ui/Heading";
 import { Separator } from "@/components/ui/Separator";
 import { LOCAL_STORAGE_KEYS } from "@/config/contants";
-import skills from "@/config/soft-skills.json";
 import { Bodoni_Moda } from "next/font/google";
-import { InfoGeneral } from "./InfoGeneral";
-import { LenguagesSection } from "./Lenguages";
-import { SkillsSection } from "./Skills";
-import { ToolsSection } from "./Tools";
+import { GeneralProfile } from "@/components/profile/GeneralProfile";
+import { SkillsProfile } from "../profile/SkillsProfile";
+import { LenguagesProfile } from "../profile/LenguagesProfile";
+import { ToolsProfile } from "../profile/ToolsProfile";
+import { EducationProfile } from "../profile/EducationProfile";
+import { JobsProfile } from "../profile/JobsProfile";
 
 const bodoni = Bodoni_Moda({ subsets: ["latin"], style: ["normal", "italic"] });
 
@@ -19,11 +20,6 @@ export const HomeSection = () => {
     LOCAL_STORAGE_KEYS.PRESENTATION
   );
   const dataPresentationParsed = JSON.parse(dataPresentation || "{}");
-
-  const findSkills = (value: Option[]) => {
-    const skill = skills.find((skill) => skill.value === value);
-    return skill?.label || "";
-  };
 
   if (!dataContactParsed) return <div>No hay data</div>;
 
@@ -59,14 +55,29 @@ export const HomeSection = () => {
         </h2>
       </div>
 
+      <Separator size="xl" />
+
+      <GeneralProfile introduction={splitSummaryByReturn} />
+
       <Separator size="lg" />
 
-      <InfoGeneral introduction={splitSummaryByReturn} />
-      <SkillsSection />
-      <LenguagesSection />
+      <SkillsProfile />
 
-      <ToolsSection />
+      <Separator size="lg" />
 
+      <LenguagesProfile />
+
+      <Separator size="xl" />
+
+      <ToolsProfile />
+
+      <Separator size="xl" />
+
+      <EducationProfile />
+
+      <Separator size="xl" />
+
+      <JobsProfile />
     </section>
   );
 };

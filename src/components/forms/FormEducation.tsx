@@ -1,17 +1,17 @@
 "use client";
 import { LOCAL_STORAGE_KEYS } from "@/config/contants";
-import months from "@/config/months.json";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { Fragment } from "react";
-import { v4 as generateUUID } from "uuid";
-import { TrashIcon } from "../icons/trash-icon";
-import Modal from "../ui/Modal";
+import { Fragment, useState } from "react";
 import { Separator } from "../ui/Separator";
 import { Fieldset } from "./Fieldset";
 import { InputText } from "./InputText";
+import Modal from "../ui/Modal";
+import months from "@/config/months.json";
+import { v4 as generateUUID } from "uuid";
 
 type FormValuesTools = {
   tools: string;
+  educations: Education[]
 };
 
 type FormValuesEducation = {
@@ -23,10 +23,6 @@ type FormValuesEducation = {
   finish_year: string;
   emisor: string;
 };
-
-type Educations = {
-  educations: Education[];
-}
 
 interface Education {
   id: string;
@@ -40,52 +36,52 @@ interface Education {
 }
 
 export const FormEducation = () => {
-  const [, setStoredTools] = useLocalStorage(LOCAL_STORAGE_KEYS.TOOLS, {});
-
-  const [, setStoredEducation] = useLocalStorage(
-    LOCAL_STORAGE_KEYS.EDUCATION,
-    { educations: [] }
-  );
-
-  const localStorageEducation = localStorage.getItem(LOCAL_STORAGE_KEYS.EDUCATION);
-  const localStorageEducationValue = localStorageEducation ? JSON.parse(localStorageEducation) : [];
+  const [tools, setTools] = useLocalStorage(LOCAL_STORAGE_KEYS.TOOLS);
 
   const onSubmitTools = (values: FormValuesTools) => {
-    setStoredTools((oldData: FormValuesTools) => ({
-      ...oldData,
-      ...values,
-    }));
+    const tools = values.tools.split(",").map((tool) => tool.trim());
+    setTools({ tools });
   };
 
-  const onSubmitEducation = (values: FormValuesEducation) => {
-
-    setStoredEducation((oldData: Educations) => ({
+  const onSubmitEducation = (data: FormValuesTools) => {
+    setTools((oldData: FormValuesTools) => ({
       ...oldData,
       educations: [
         ...oldData.educations,
         {
           id: generateUUID(),
-          ...values,
+          ...data,
         },
       ],
     }));
-
-  }
-
-  const onDeleteEducation = (id: string) => {
-    console.log(id)
-    setStoredEducation((oldData: Educations) => ({
-      ...oldData,
-      educations: oldData.educations.filter((education: Education) => education.id !== id)
-    }));
-  }
+  };
 
   return (
     <Fragment>
+      {tools.educations.length > 0 && (
+        <div className="my-5 flex items-start gap-5">
+          {tools.educations.map((education: Education) => {
+            return (
+              <div key={education.id} className="shadow-ij-m p-3 rounded">
+                <h3 className="text-lg font-semibold text-gray-900 ">
+                  {education.type}
+                </h3>
+                <time className="block mb-2 text-sm font-normal leading-none text-gray-400 ">
+                  {education.start_month} - {education.start_year}
+                </time>
+                <p className="text-base font-normal text-gray-500 ">
+                  {education.description}.
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
       <Fieldset<FormValuesTools>
         onSubmit={onSubmitTools}
         title="Educación"
-        localStorage={LOCAL_STORAGE_KEYS.EDUCATION}
+        localStorage={LOCAL_STORAGE_KEYS.TOOLS}
       >
         {({ register }) => (
           <>
@@ -102,39 +98,11 @@ export const FormEducation = () => {
 
       <Separator size="lg" />
 
-      <div className="flex flex-wrap min-w-1/2 gap-3 mb-5" >
-
-        {localStorageEducationValue.educations.map((education: Education) => (
-          <div key={education.id} className="shadow-ij-m p-3 rounded min-w-full" >
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-lg font-bold text-ij-blue">
-                  {education.type}
-                </h3>
-                <p className="text-sm text-ij-black">
-                  {education.start_month} {education.start_year} -{" "}
-                  {education.finish_month} {education.finish_year}
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                {/* <button className="text-sm text-primary">Editar</button> */}
-                <button onClick={() => onDeleteEducation(education.id)} className="text-sm text-error font-bold flex items-center gap-1"> 
-                  <TrashIcon />
-                 Eliminar</button>
-              </div>
-            </div>
-            <p className="text-sm text-ij-black">{education.description}</p>
-            <p className="text-sm text-ij-black">{education.emisor}</p>
-          </div>
-        ))
-        }
-      </div>
-
       <Modal title="Añade una educación">
         <Fieldset<FormValuesEducation>
           onSubmit={onSubmitEducation}
           title="Educación"
-          localStorage={LOCAL_STORAGE_KEYS.EDUCATION}
+          localStorage={LOCAL_STORAGE_KEYS.TOOLS}
         >
           {({ register }) => (
             <>
