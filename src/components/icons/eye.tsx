@@ -1,5 +1,6 @@
+import { SVGProps } from "react";
 
-export function IconEye(props) {
+export function IconEye(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 1024 1024"

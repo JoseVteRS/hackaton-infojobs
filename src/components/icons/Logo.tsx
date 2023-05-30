@@ -1,4 +1,7 @@
-export function LogoInfoJobs(props) {
+import { SVGProps } from "react";
+
+
+export function LogoInfoJobs(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 138 136.054" style={{ fill: "white" }}
     {...props}

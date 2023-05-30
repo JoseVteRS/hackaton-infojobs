@@ -1,4 +1,6 @@
-export function IconSquareGithub(props) {
+import { SVGProps } from "react";
+
+export function IconSquareGithub(props: SVGProps<SVGSVGElement>) {
     return (
       <svg
         viewBox="0 0 448 512"

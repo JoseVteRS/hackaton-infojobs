@@ -1,6 +1,6 @@
-import React from 'react'
+import  { SVGProps } from 'react'
 
-export const GraduationIcon = (props) => {
+export const GraduationIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
     data-name="Layer 1"

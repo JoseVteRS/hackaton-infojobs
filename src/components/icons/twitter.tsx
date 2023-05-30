@@ -1,4 +1,6 @@
-export function IconTwitterSquare(props) {
+import { SVGProps } from "react";
+
+export function IconTwitterSquare(props: SVGProps<SVGSVGElement>) {
     return (
       <svg
         viewBox="0 0 1024 1024"

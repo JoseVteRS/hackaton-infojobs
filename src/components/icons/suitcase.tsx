@@ -1,4 +1,6 @@
-export function IconSuitcaseFill(props) {
+import { SVGProps } from "react";
+
+export function IconSuitcaseFill(props: SVGProps<SVGSVGElement>) {
     return (
       <svg
         viewBox="0 0 24 24"
