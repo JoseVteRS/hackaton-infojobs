@@ -1,4 +1,4 @@
-import { FormLenguages } from "@/components/forms/FormLenguages"
+import { LenguagesSection } from "@/components/sections/Lenguages"
 
 const LenguagesPage = () => {
   return (
@@ -7,7 +7,7 @@ const LenguagesPage = () => {
               Idiomas
           </h3>
 
-          <FormLenguages />
+          <LenguagesSection />
 
     </div>
   )

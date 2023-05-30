@@ -13,13 +13,13 @@ type FormValuesLenguage = {
     level: string
 };
 
-interface Lenguage {
+export interface Lenguage {
     id: string;
     lenguage_name: string;
     level: string;
 }
 
-type Lenguages = {
+export type Lenguages = {
     lenguages: Lenguage[];
 }
 
@@ -47,21 +47,6 @@ export const FormLenguages = () => {
 
     return (
         <Fragment>
-
-            <div className="flex gap-5 my-5">
-                {
-
-                    localStorageLenguagesParsed.lenguages.map((lenguage: Lenguage) => {
-                        return (
-                            <div className="shadow-ij-m p-3 rounded w-full" key={lenguage.id}>
-                                <p className="text-ij-black text-lg font-bold">{lenguage.lenguage_name}</p>
-                                <p className="text-sm text-ij-gray font-regular">{lenguage.level}</p>
-                            </div>
-                        )
-                    })
-                }
-
-            </div>
 
             <Modal title="Añade un idioma" >
                 <Fieldset<FormValuesLenguage>
