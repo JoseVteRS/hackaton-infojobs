@@ -1,3 +1,4 @@
+"use client"
 import { FormEducation } from "@/components/forms/FormEducation";
 import React from "react";
 

@@ -2,7 +2,6 @@
 
 import { FormLenguages, Lenguage, Lenguages } from "@/components/forms/FormLenguages";
 import { TrashIcon } from "@/components/icons/trash-icon";
-import Heading from "@/components/ui/Heading";
 import { LOCAL_STORAGE_KEYS } from "@/config/contants";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import React from "react";
