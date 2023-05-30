@@ -101,7 +101,7 @@ export const FormJobs = () => {
 
       <Separator size="lg" />
 
-      <Modal title="Añade una educación">
+      <Modal title="Añade una trabajo">
         <Fieldset<FormValuesJobs>
           onSubmit={onSubmitJobs}
           title="Trabajos"

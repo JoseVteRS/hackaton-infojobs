@@ -43,7 +43,7 @@ export const FormEducation = () => {
     setTools({ tools });
   };
 
-  const onSubmitEducation = (data: FormValuesTools) => {
+  const onSubmitEducation = (data: FormValuesEducation) => {
     setTools((oldData: FormValuesTools) => ({
       ...oldData,
       educations: [
