@@ -1,3 +1,5 @@
+import { IconSquareGithub } from "@/components/icons/github";
+import { IconTwitterSquare } from "@/components/icons/twitter";
 import Link from "next/link";
 
 export default function Home() {
@@ -14,10 +16,18 @@ export default function Home() {
         Comienza ahora
       </Link>
 
-
-      <div className="mt-20">
-        <Link href="https://github.com/JoseVteRS/hackaton-infojobs">Github</Link>
-        <Link href="https://twitter.com/ImSilencio_">Twitter</Link>
+      <div className="mt-20 flex gap-5 items-center">
+        <Link href="https://github.com/JoseVteRS/hackaton-infojobs" className="font-bold flex gap-1 items-center text-white my-2 hover:text-gray-300">
+          <IconSquareGithub className="w-6 h-6" />
+          Github
+        </Link>
+        <Link
+          href="https://twitter.com/ImSilencio_"
+          className="font-bold flex gap-1 items-center text-white my-2 hover:text-gray-300"
+        >
+          <IconTwitterSquare className="w-6 h-6" />
+          Twitter
+        </Link>
       </div>
     </div>
   );
