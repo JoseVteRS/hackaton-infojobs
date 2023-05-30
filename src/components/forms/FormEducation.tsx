@@ -4,6 +4,7 @@ import months from "@/config/months.json";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { Fragment } from "react";
 import { v4 as generateUUID } from "uuid";
+import { TrashIcon } from "../icons/trash-icon";
 import Modal from "../ui/Modal";
 import { Separator } from "../ui/Separator";
 import { Fieldset } from "./Fieldset";
@@ -71,6 +72,14 @@ export const FormEducation = () => {
 
   }
 
+  const onDeleteEducation = (id: string) => {
+    console.log(id)
+    setStoredEducation((oldData: Educations) => ({
+      ...oldData,
+      educations: oldData.educations.filter((education: Education) => education.id !== id)
+    }));
+  }
+
   return (
     <Fragment>
       <Fieldset<FormValuesTools>
@@ -108,8 +117,10 @@ export const FormEducation = () => {
                 </p>
               </div>
               <div className="flex items-center gap-2">
-                <button className="text-sm text-ij-blue">Editar</button>
-                <button className="text-sm text-ij-red">Eliminar</button>
+                {/* <button className="text-sm text-primary">Editar</button> */}
+                <button onClick={() => onDeleteEducation(education.id)} className="text-sm text-error font-bold flex items-center gap-1"> 
+                  <TrashIcon />
+                 Eliminar</button>
               </div>
             </div>
             <p className="text-sm text-ij-black">{education.description}</p>
