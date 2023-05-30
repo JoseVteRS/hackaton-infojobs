@@ -1,5 +1,4 @@
 import { JobsSection } from "@/components/sections/Jobs"
-import { LenguagesSection } from "@/components/sections/Lenguages"
 
 const JobsPage = () => {
   return (

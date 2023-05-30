@@ -1,7 +1,7 @@
-export const TimelineJobs = ({ items }: { items: [] }) => {
+export const TimelineJobs = ({ items }: { items: any }) => {
   return (
     <ol className="items-center sm:flex">
-      {items.map((item, index) => {
+      {items.map((item: any, index: any) => {
         return (
           <li key={index} className="relative mb-6 sm:mb-0">
             <div className="flex items-center">

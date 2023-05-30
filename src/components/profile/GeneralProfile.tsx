@@ -32,7 +32,7 @@ export const GeneralProfile = ({ introduction }: Props) => {
         <Separator size="sm" />
 
         <div className="text-lg">
-          {splitedTextByNewLine.map((paragraph, index) => {
+          {splitedTextByNewLine.map((paragraph: any, index: any) => {
             return <Text key={index}> {paragraph} </Text>;
           })}
         </div>
