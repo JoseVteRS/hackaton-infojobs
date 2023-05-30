@@ -1,13 +1,13 @@
 "use client";
 import { LOCAL_STORAGE_KEYS } from "@/config/contants";
+import months from "@/config/months.json";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
+import { v4 as generateUUID } from "uuid";
+import Modal from "../ui/Modal";
 import { Separator } from "../ui/Separator";
 import { Fieldset } from "./Fieldset";
 import { InputText } from "./InputText";
-import Modal from "../ui/Modal";
-import months from "@/config/months.json";
-import { v4 as generateUUID } from "uuid";
 
 type FormValuesTools = {
   tools: string;
@@ -22,6 +22,10 @@ type FormValuesEducation = {
   finish_year: string;
   emisor: string;
 };
+
+type Educations = {
+  educations: Education[];
+}
 
 interface Education {
   id: string;
@@ -39,7 +43,7 @@ export const FormEducation = () => {
 
   const [, setStoredEducation] = useLocalStorage(
     LOCAL_STORAGE_KEYS.EDUCATION,
-    {}
+    { educations: [] }
   );
 
   const localStorageEducation = localStorage.getItem(LOCAL_STORAGE_KEYS.EDUCATION);
@@ -53,12 +57,19 @@ export const FormEducation = () => {
   };
 
   const onSubmitEducation = (values: FormValuesEducation) => {
-    console.log(localStorageEducationValue);
-    setStoredEducation((oldData: Education[]) => {
-      const newEducation = { ...values, id: generateUUID() };
-      return [...oldData, newEducation];
-    });
-  };
+
+    setStoredEducation((oldData: Educations) => ({
+      ...oldData,
+      educations: [
+        ...oldData.educations,
+        {
+          id: generateUUID(),
+          ...values,
+        },
+      ],
+    }));
+
+  }
 
   return (
     <Fragment>
