@@ -1,6 +1,7 @@
+'use client'
 import { LenguagesSection } from "@/components/sections/Lenguages"
 
-const LenguagesPage = () => {
+export default function LenguagesPage()  {
   return (
     <div>
           <h3 className="my-6 text-2xl text-black/80 font-semibold">
@@ -13,4 +14,3 @@ const LenguagesPage = () => {
   )
 }
 
-export default LenguagesPage

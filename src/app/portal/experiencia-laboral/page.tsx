@@ -1,16 +1,11 @@
-import { JobsSection } from "@/components/sections/Jobs"
+import { JobsSection } from "@/components/sections/Jobs";
 
-const JobsPage = () => {
+export default function JobsPage() {
   return (
     <div>
-          <h3 className="my-6 text-2xl text-black/80 font-semibold">
-              Trabajos
-          </h3>
+      <h3 className="my-6 text-2xl text-black/80 font-semibold">Trabajos</h3>
 
-          <JobsSection />
-
+      <JobsSection />
     </div>
-  )
+  );
 }
-
-export default JobsPage

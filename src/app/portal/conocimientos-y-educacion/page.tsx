@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import { FormEducation } from "@/components/forms/FormEducation";
 import React from "react";
 
-const ConocimientoEducacionPage = () => {
+export default function ConocimientoEducacionPage() {
   return (
     <>
       <h3 className="my-6 text-2xl text-black/80 font-semibold">
@@ -11,6 +11,4 @@ const ConocimientoEducacionPage = () => {
       <FormEducation />
     </>
   );
-};
-
-export default ConocimientoEducacionPage;
+}
