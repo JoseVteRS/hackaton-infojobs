@@ -1,13 +1,8 @@
 import cx from "classnames";
-import { Bodoni_Moda, Dosis } from "next/font/google";
+import { Dosis } from "next/font/google";
 
 const dosis = Dosis({ subsets: ["latin"], weight: ["600", "800"] });
-const bodoni = Bodoni_Moda({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["400", "700"],
-  display: "swap",
-});
+
 
 interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   children: React.ReactNode;
@@ -34,7 +29,6 @@ const SIZE = {
 
 const FONT_FAMILY = {
   dosis: dosis.className,
-  bodoni: bodoni.className,
 };
 
 const sizerUnderline = (size: keyof typeof SIZE) => {
@@ -74,13 +68,12 @@ const Heading = ({
   size,
   className,
   withDecoration = false,
-  fontStyles = "bodoni",
+  fontStyles,
   ...restProps
 }: HeadingProps) => {
   const classNames = cx(`font-bold ${className}`, {
     [KIND[kind]]: kind,
     [SIZE[size]]: sizerUnderline(size),
-    [FONT_FAMILY[fontStyles]]: fontStyles,
   });
 
   return (

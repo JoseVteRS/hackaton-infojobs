@@ -2,7 +2,6 @@
 import Heading from "@/components/ui/Heading";
 import { Separator } from "@/components/ui/Separator";
 import { LOCAL_STORAGE_KEYS } from "@/config/contants";
-import { Bodoni_Moda } from "next/font/google";
 import { GeneralProfile } from "@/components/profile/GeneralProfile";
 import { SkillsProfile } from "../profile/SkillsProfile";
 import { LenguagesProfile } from "../profile/LenguagesProfile";
@@ -10,7 +9,7 @@ import { ToolsProfile } from "../profile/ToolsProfile";
 import { EducationProfile } from "../profile/EducationProfile";
 import { JobsProfile } from "../profile/JobsProfile";
 
-const bodoni = Bodoni_Moda({ subsets: ["latin"], style: ["normal", "italic"], display: "swap" });
+
 
 export const HomeSection = () => {
   const dataContact = window?.localStorage.getItem(LOCAL_STORAGE_KEYS.CONTACT);
@@ -47,9 +46,9 @@ export const HomeSection = () => {
           {dataPresentationParsed.headline}
         </Heading>
 
-        <h2 className={`italic text-2xl my-5 ${bodoni.className} `}>
+        <h2 className={`italic text-2xl my-5 `}>
           En{" "}
-          <strong className={`italic ${bodoni.className} text-2xl font-bold `}>
+          <strong className={`italic text-2xl font-bold `}>
             {dataContactParsed.country}
           </strong>
         </h2>
