@@ -5,7 +5,6 @@ import { Separator } from "../ui/Separator";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { LOCAL_STORAGE_KEYS } from "@/config/contants";
 
-
 interface Skill {
   id: string;
   name: string;
@@ -13,7 +12,6 @@ interface Skill {
 
 export const LenguagesProfile = () => {
   const [lenguages] = useLocalStorage(LOCAL_STORAGE_KEYS.LANGUAGE);
-
 
   return (
     <section>
@@ -25,15 +23,25 @@ export const LenguagesProfile = () => {
         <Separator size="md" />
 
         <div className="flex gap-8 w-full">
-          {lenguages.lenguages.map((lenguage: any) => {
-            return (
-              <div key={lenguage.id} className="w-full shadow-ij-s p-5 rounded grid place-content-center  text-center">
-                <p className="font-regular text-lg">{lenguage.lenguage_name}</p>
-                <p className="font-regular text-ij-gray text-md uppercase">{lenguage.level}</p>
-
-              </div>
-            );
-          })}
+          {!lenguages ? (
+            <div>No hay data</div>
+          ) : (
+            lenguages.lenguages.map((lenguage: any) => {
+              return (
+                <div
+                  key={lenguage.id}
+                  className="w-full shadow-ij-s p-5 rounded grid place-content-center  text-center"
+                >
+                  <p className="font-regular text-lg">
+                    {lenguage.lenguage_name}
+                  </p>
+                  <p className="font-regular text-ij-gray text-md uppercase">
+                    {lenguage.level}
+                  </p>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </section>

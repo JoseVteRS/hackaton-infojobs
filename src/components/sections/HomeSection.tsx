@@ -10,21 +10,19 @@ import { EducationProfile } from "../profile/EducationProfile";
 import { JobsProfile } from "../profile/JobsProfile";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 
-
-
 export const HomeSection = () => {
-
-const [contact] = useLocalStorage(LOCAL_STORAGE_KEYS.CONTACT);
-
-
-  const dataPresentation = window?.localStorage.getItem(
+  const [contact] = useLocalStorage(LOCAL_STORAGE_KEYS.CONTACT);
+  const [presentation] = useLocalStorage(
     LOCAL_STORAGE_KEYS.PRESENTATION
   );
-  const dataPresentationParsed = JSON.parse(dataPresentation || "{}");
+
+
+  
 
   if (!contact) return <div>No hay data</div>;
+  if (!presentation) return <div>No hay data</div>;
 
-  const splitSummaryByReturn = dataPresentationParsed.summary.split("\n");
+  const splitSummaryByReturn = presentation?.summary.split("\n");
 
   return (
     <section>
@@ -45,7 +43,7 @@ const [contact] = useLocalStorage(LOCAL_STORAGE_KEYS.CONTACT);
           kind="black"
           className="my-6 font-normal text-3xl italic"
         >
-          {dataPresentationParsed.headline}
+          {presentation.headline}
         </Heading>
 
         <h2 className={`italic text-2xl my-5 `}>

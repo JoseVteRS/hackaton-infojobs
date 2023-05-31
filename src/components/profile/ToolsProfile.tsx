@@ -16,9 +16,7 @@ interface Skill {
 export const ToolsProfile = () => {
   const [tools] = useLocalStorage(LOCAL_STORAGE_KEYS.TOOLS);
 
-  const splitedToolsByComma = (toolsString:string)=> {
-    return toolsString.split(',');
-  }
+ 
 
   return (
     <section>
@@ -30,19 +28,23 @@ export const ToolsProfile = () => {
         <Separator size="md" />
 
         <div className="flex gap-8 w-full">
-          {splitedToolsByComma(tools.tools).map((tool: any, id) => {
-            return (
-              <div
-                key={id}
-                className="w-full shadow-ij-s p-5 rounded grid place-content-center  text-center"
-              >
-                <p className="font-regular text-lg">{tool.tool_name}</p>
-                <p className="font-regular text-ij-gray text-md uppercase">
-                  {tool}
-                </p>
-              </div>
-            );
-          })}
+          {!tools ? (
+            <div>No hay data</div>
+          ) : (
+            tools.tools.map((tool: any, id: any) => {
+              return (
+                <div
+                  key={id}
+                  className="w-full shadow-ij-s p-5 rounded grid place-content-center  text-center"
+                >
+                  <p className="font-regular text-lg">{tool.tool_name}</p>
+                  <p className="font-regular text-ij-gray text-md uppercase">
+                    {tool}
+                  </p>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </section>

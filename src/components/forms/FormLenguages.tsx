@@ -28,16 +28,27 @@ export const FormLenguages = () => {
   const [, setStoredLenguages] = useLocalStorage(LOCAL_STORAGE_KEYS.LANGUAGE);
 
   const onSubmitLenguage = (values: FormValuesLenguage) => {
-    setStoredLenguages((oldData: Lenguages) => ({
-      ...oldData,
-      lenguages: [
-        ...oldData.lenguages,
-        {
-          id: generateUUID(),
-          ...values,
-        },
-      ],
-    }));
+    setStoredLenguages((oldData: Lenguages) => {
+      if(!oldData) return ({
+        lenguages: [
+          {
+            id: generateUUID(),
+            ...values,
+          },
+        ],
+      })
+      
+      return {
+        ...oldData,
+        lenguages: [
+          ...oldData.lenguages,
+          {
+            id: generateUUID(),
+            ...values,
+          },
+        ],
+      }
+    });
   };
 
   return (

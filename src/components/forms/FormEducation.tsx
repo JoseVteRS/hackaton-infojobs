@@ -11,7 +11,7 @@ import { v4 as generateUUID } from "uuid";
 
 type FormValuesTools = {
   tools: string;
-  educations: Education[]
+  educations: Education[];
 };
 
 type FormValuesEducation = {
@@ -39,21 +39,48 @@ export const FormEducation = () => {
   const [tools, setTools] = useLocalStorage(LOCAL_STORAGE_KEYS.TOOLS);
 
   const onSubmitTools = (values: FormValuesTools) => {
-    const tools = values.tools.split(",").map((tool) => tool.trim());
-    setTools({ tools });
+    const toolsSplitted = values.tools.split(",").map((tool) => tool.trim());
+    setTools((oldData: FormValuesTools) => {
+      if(!oldData){
+        return {
+          tools: toolsSplitted,
+          educations: [],
+        };
+      }
+
+      return {
+        tools: toolsSplitted,
+      };
+
+    });
   };
 
   const onSubmitEducation = (data: FormValuesEducation) => {
-    setTools((oldData: FormValuesTools) => ({
-      ...oldData,
-      educations: [
-        ...oldData?.educations,
-        {
-          id: generateUUID(),
-          ...data,
-        },
-      ],
-    }));
+    setTools((oldData: FormValuesTools) => {
+      if (!oldData.educations){
+        return {
+          tools: oldData.tools,
+          educations: [
+            {
+              id: generateUUID(),
+              data,
+            },
+          ],
+        };
+
+      }
+
+      return {
+        ...oldData,
+        educations: [
+          ...oldData?.educations,
+          {
+            id: generateUUID(),
+            ...data,
+          },
+        ],
+      };
+    });
   };
 
   return (

@@ -19,7 +19,7 @@ export const JobsProfile = () => {
 
         <Separator size="md" />
 
-        <TimelineJobs items={jobs.jobs} />
+        {!jobs ? <p>No hay data</p> : <TimelineJobs items={jobs.jobs} />}
       </div>
     </section>
   );

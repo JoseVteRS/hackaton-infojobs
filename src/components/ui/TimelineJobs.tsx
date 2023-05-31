@@ -1,4 +1,5 @@
 export const TimelineJobs = ({ items }: { items: any }) => {
+  if(!items) return <div>No hay data</div>
   return (
     <ol className="items-center sm:flex">
       {items.map((item: any, index: any) => {
